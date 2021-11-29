@@ -5,3 +5,8 @@ build-backend = "setuptools.build_meta"
 
 [tool.pflake8]
 max-line-length = 99
+
+[tool.autopep8]
+recursive = true
+diff = true
+max-line-length = 99
