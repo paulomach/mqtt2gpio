@@ -1,10 +1,15 @@
 """Subscribe to topic, write IO and return message on topic."""
 import argparse
+import logging
+import sys
 from time import sleep
 
 import paho.mqtt.client as mqtt
 import paho.mqtt.subscribe as subscribe
 from gpiozero import LED
+
+logging.basicConfig(stream=sys.stdout, format='%(asctime)s:%(levelname)s:%(message)s')
+logger = logging.getLogger()
 
 
 def log(message: str):
@@ -13,7 +18,7 @@ def log(message: str):
     Args:
         message: message to log
     """
-    print(message)
+    logger.info(message)
 
 
 def publish_gpio2topic(client, topic, payload):
@@ -86,6 +91,8 @@ class Mqtt2gpio():
 
 def main():
     """Script entrypoint."""
+    logger.setLevel(logging.INFO)
+
     m = Mqtt2gpio()
     m.run()
 
