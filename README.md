@@ -16,6 +16,16 @@ Personal raspberrypi home automation project.
 
 # Usage
 
+```shell
+mqtt2gpio.py -s <subscribe_topic> -p <publish_topic> -g <io_pin> -b <broker>
+```
+
+* subscribe_topic - topic from where events are monitored. Message payload should be byte 0/1
+* publish_topic - topic where result is published
+* io_pin - io to be written
+* broker - mqtt broker address
+
+
 # Dependencies
 
 * python>=3.7
@@ -24,5 +34,5 @@ Personal raspberrypi home automation project.
 
 # References
 
-[gpiozero](https://gpiozero.readthedocs.io/en/stable/installing.html)
-[paho-mqtt](https://pypi.org/project/paho-mqtt/)
+* [gpiozero](https://gpiozero.readthedocs.io/en/stable/installing.html)
+* [paho-mqtt](https://pypi.org/project/paho-mqtt/)

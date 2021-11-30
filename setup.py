@@ -1,9 +1,9 @@
-import setuptools
+from setuptools import setup, find_packages
 
 with open("README.md", "r", encoding="utf-8") as fh:
     long_description = fh.read()
 
-setuptools.setup(
+setup(
     name="mqtt2gpio",
     version="0.0.1",
     author="Paulo Machado",
@@ -21,6 +21,15 @@ setuptools.setup(
         "Operating System :: GNU/Linux",
     ],
     package_dir={"": "src"},
-    packages=setuptools.find_packages(where="src"),
+    packages=find_packages(where="src"),
     python_requires=">=3.7",
+    entry_points={
+        'console_scripts': [
+            'mqtt2gpio=mqtt2gpio.mqtt2gpio:main'
+        ],
+    },
+    install_requires=[
+        'paho-mqtt',
+        'gpiozero'
+    ]
 )
