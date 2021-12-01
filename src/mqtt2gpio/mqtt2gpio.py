@@ -8,7 +8,8 @@ import paho.mqtt.client as mqtt
 import paho.mqtt.subscribe as subscribe
 from gpiozero import LED
 
-logging.basicConfig(stream=sys.stdout, format='%(asctime)s:%(levelname)s:%(message)s')
+logging.basicConfig(stream=sys.stdout,
+                    format='%(asctime)s:%(levelname)s:%(message)s')
 logger = logging.getLogger()
 
 
@@ -51,7 +52,7 @@ def write_gpio_callback(client, instance, message):
         instance.led.off()
         log('LED OFF')
 
-    publish_gpio2topic(client, instance.args.pubtopic, "on" if instance.led.is_lit else "off")
+    publish_gpio2topic(client, instance.args.pubtopic, message.payload)
 
 
 class Mqtt2gpio():
